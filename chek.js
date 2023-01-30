@@ -1,4 +1,4 @@
-const checkBox = document.querySelectorAll(`.inbox input[type="checkbox"]`);
+const checkBox = document.querySelectorAll('.inbox input[type="checkbox"]');
 
 let lastcheck;
 function handelChek(e){
@@ -6,12 +6,15 @@ function handelChek(e){
     let between = false;
 
     if(e.shiftKey && this.checked){
-    checkBox.forEach( checkBox => {
-        if(checkBox === this || checkBox === lastcheck){
+    checkBox.forEach( checkbox => {
+        if(checkbox === this || checkbox === lastcheck){
             between = !between;
+        }
+        if(between){
+            checkbox.checked = true;
         }
     });
     }
-    lastcheck = true;
+    lastcheck = this;
 }
-checkBox.forEach(checkBox => checkBox.addEventListener('click', handelChek));
+checkBox.forEach(checkbox => checkbox.addEventListener('click', handelChek));
